@@ -20,7 +20,10 @@
         void preOrder(Node*);
         void inOrder(Node*);
         void postOrder(Node*);
-        void addNode(int v);
+        void addNode(int);
         Node* getNode(void);
+        void remove(int);
+        bool search(int);
+        int getSize(void);
     };
     

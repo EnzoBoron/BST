@@ -117,3 +117,22 @@ void Tree::postOrder(Node* loop)
     postOrder(loop->right);
     std::cout << loop->value << std::endl;
 }
+
+bool Tree::search(int key) {
+    Node *loop = this->node;
+
+    while(loop) {
+        if (key == loop->value)
+            return true;
+        if (key >= loop->value)
+            loop = loop->right;
+        else
+            loop = loop->left;
+    }
+
+    return false;
+}
+
+int Tree::getSize(void) {
+    return this->size;
+}
