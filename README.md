@@ -129,16 +129,16 @@ Expected output:
 
 ## Compilation Example
 
-Using `g++`:
+Using `make`:
 
 ```
-g++ src/Tree.cpp main.cpp -o tree
+make 
 ```
 
 Run:
 
 ```
-./tree
+./binaryTree
 ```
 
 ---
