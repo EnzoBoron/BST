@@ -124,3 +124,30 @@ void Tree::removeInternal(std::unique_ptr<Node>& current, int key)
         }
     }
 }
+
+void Tree::printOperatorInternal(std::ostream& os, Node* current) const
+{ 
+    if (!current)
+        return;
+
+    printOperatorInternal(os, current->left.get());
+    std::cout << current->value << std::endl;
+    printOperatorInternal(os, current->right.get());
+}
+
+std::ostream& operator<<(std::ostream& os, const Tree& t) {
+    t.printOperatorInternal(os, t.node.get());
+    return os;
+}
+
+bool Tree::operator>(const Tree& other) const {
+    return size > other.size;
+}
+
+bool Tree::operator<(const Tree& other) const {
+    return size < other.size;
+}
+
+bool Tree::operator==(const Tree& other) const {
+    return size == other.size;
+}

@@ -15,6 +15,7 @@
         void inOrderInternal(Node*) const;
         void postOrderInternal(Node*) const;
         void insertInternal(int, std::unique_ptr<Node>&);
+        void printOperatorInternal(std::ostream& os, Node* current) const;
     public:
         void preOrder() const;
         void inOrder() const;
@@ -23,5 +24,10 @@
         void insert(int);
         void remove(int);
         int getSize(void) const;
+
+        friend std::ostream& operator<<(std::ostream& os, const Tree& t);
+        bool operator<(const Tree& other) const;
+        bool operator>(const Tree& other) const;
+        bool operator==(const Tree& other) const;
     };
     

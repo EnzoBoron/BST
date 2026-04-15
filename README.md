@@ -50,7 +50,7 @@ int main()
 
 - [X] Make the insert function recursive
 - [ ] Use a template
-- [ ] Add operator overloading (printing and comparisons)
+- [x] Add operator overloading (printing and comparisons)
 
 ## 📜 License
 
