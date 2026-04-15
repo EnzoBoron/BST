@@ -49,8 +49,8 @@ int main()
 ## 🛠️ Roadmap
 
 - [X] Make the insert function recursive
-- [ ] Use a template
-- [x] Add operator overloading (printing and comparisons)
+- [X] Use a template
+- [X] Add operator overloading (printing and comparisons)
 
 ## 📜 License
 
