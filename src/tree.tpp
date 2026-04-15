@@ -1,25 +1,27 @@
-#include "../include/tree.hpp"
-
-void Tree::insert(int v) {
+#include <vector>
+template<typename T>
+void Tree<T>::insert(T v) {
     insertInternal(v, node);
 }
 
-void Tree::insertInternal(int v, std::unique_ptr<Node>& current)
+template<typename T>
+void Tree<T>::insertInternal(T v, std::unique_ptr<Node<T>>& current)
 {
     if (!current) {
-        current = std::make_unique<Node>(v);
+        current = std::make_unique<Node<T>>(v);
         size++;
         return;
     }
 
-    if (current->value < v) {
+    if (v < current->value) {
         insertInternal(v, current->left);
-    } else if (current->value > v) {
+    } else if (v > current->value) {
         insertInternal(v, current->right);
     }
 }
 
-void Tree::preOrderInternal(Node* current) const
+template<typename T>
+void Tree<T>::preOrderInternal(Node<T>* current) const
 { 
     if (!current)
         return;
@@ -30,7 +32,8 @@ void Tree::preOrderInternal(Node* current) const
     preOrderInternal(current->right.get());
 }
 
-void Tree::inOrderInternal(Node* current) const
+template<typename T>
+void Tree<T>::inOrderInternal(Node<T>* current) const
 { 
     if (!current)
         return;
@@ -40,7 +43,8 @@ void Tree::inOrderInternal(Node* current) const
     inOrderInternal(current->right.get());
 }
 
-void Tree::postOrderInternal(Node* current) const
+template<typename T>
+void Tree<T>::postOrderInternal(Node<T>* current) const
 {
     if (!current)
         return;
@@ -50,24 +54,28 @@ void Tree::postOrderInternal(Node* current) const
     std::cout << current->value << std::endl;
 }
 
-void Tree::preOrder() const
+template<typename T>
+void Tree<T>::preOrder() const
 {
     preOrderInternal(node.get());
 }
 
-void Tree::inOrder() const
+template<typename T>
+void Tree<T>::inOrder() const
 {
     inOrderInternal(node.get());
 }
 
-void Tree::postOrder() const
+template<typename T>
+void Tree<T>::postOrder() const
 {
     postOrderInternal(node.get());
 }
 
-bool Tree::contains(int key) const
+template<typename T>
+bool Tree<T>::contains(T key) const
 {
-    Node* current = node.get();
+    Node<T>* current = node.get();
 
     while(current) {
         if (key == current->value)
@@ -81,17 +89,20 @@ bool Tree::contains(int key) const
     return false;
 }
 
-int Tree::getSize(void) const
+template<typename T>
+int Tree<T>::getSize(void) const
 {
     return size;
 }
 
-void Tree::remove(int key)
+template<typename T>
+void Tree<T>::remove(T key)
 {
     removeInternal(node, key);
 }
 
-void Tree::removeInternal(std::unique_ptr<Node>& current, int key)
+template<typename T>
+void Tree<T>::removeInternal(std::unique_ptr<Node<T>>& current, T key)
 {
     if (!current)
         return;
@@ -115,7 +126,7 @@ void Tree::removeInternal(std::unique_ptr<Node>& current, int key)
             current = std::move(current->left);
             size--;
         } else {
-            Node* succ = current->right.get();
+            Node<T>* succ = current->right.get();
             while (succ->left)
                 succ = succ->left.get();
     
@@ -125,29 +136,34 @@ void Tree::removeInternal(std::unique_ptr<Node>& current, int key)
     }
 }
 
-void Tree::printOperatorInternal(std::ostream& os, Node* current) const
+template<typename T>
+void Tree<T>::printOperatorInternal(std::ostream& os, Node<T>* current) const
 { 
     if (!current)
         return;
 
     printOperatorInternal(os, current->left.get());
-    std::cout << current->value << std::endl;
+    os << current->value << std::endl;
     printOperatorInternal(os, current->right.get());
 }
 
-std::ostream& operator<<(std::ostream& os, const Tree& t) {
+template<typename T>
+std::ostream& operator<<(std::ostream& os, const Tree<T>& t) {
     t.printOperatorInternal(os, t.node.get());
     return os;
 }
 
-bool Tree::operator>(const Tree& other) const {
+template<typename T>
+bool Tree<T>::operator>(const Tree<T>& other) const {
     return size > other.size;
 }
 
-bool Tree::operator<(const Tree& other) const {
+template<typename T>
+bool Tree<T>::operator<(const Tree<T>& other) const {
     return size < other.size;
 }
 
-bool Tree::operator==(const Tree& other) const {
+template<typename T>
+bool Tree<T>::operator==(const Tree<T>& other) const {
     return size == other.size;
 }

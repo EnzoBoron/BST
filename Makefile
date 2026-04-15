@@ -1,5 +1,4 @@
-SRC = ./src/tree.cpp \
-	  ./src/main.cpp
+SRC = ./src/main.cpp
 CC = g++
 CFLAGS = -Wall
 

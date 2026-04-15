@@ -2,8 +2,7 @@
 
 int main()
 {
-    Tree tree;
-    Tree tree2;
+    Tree<int> tree;
 
     // Adding elements
     tree.insert(10);
@@ -11,14 +10,7 @@ int main()
     tree.insert(20);
     tree.insert(8);
 
-    tree2.insert(30);
-
-    // std::cout << tree;
-
-    if (tree == tree2)
-      std::cout << "tree est egale a tree2";
-
-    /* std::cout << "Tree size: " << tree.getSize() << std::endl;
+    std::cout << "Tree size: " << tree.getSize() << std::endl;
     tree.inOrder(); // Expected: 5 8 10 20
 
     // Removing an element
@@ -31,7 +23,7 @@ int main()
       std::cout << "Value found" << std::endl;
     } else {
       std::cout << "Value not found" << std::endl;
-    } */
+    }
 
     return 0;
 }

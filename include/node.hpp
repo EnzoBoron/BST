@@ -2,11 +2,12 @@
 
 #include <memory>
 
+template<typename T> 
 struct Node
 {
-    int value;
+    T value;
     std::unique_ptr<Node> left;
     std::unique_ptr<Node> right;
 
-    Node(int v) : value(v) {};
+    Node(T v) : value(v) {};
 };
