@@ -19,7 +19,7 @@ make
 
 int main()
 {
-    Tree tree;
+    Tree<int> tree;
 
     // Adding elements
     tree.insert(10);
