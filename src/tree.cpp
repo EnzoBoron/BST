@@ -1,33 +1,21 @@
 #include "../include/tree.hpp"
 
-void Tree::insert(int v)
+void Tree::insert(int v) {
+    insertInternal(v, node);
+}
+
+void Tree::insertInternal(int v, std::unique_ptr<Node>& current)
 {
-    if (!this->node) {
-        node = std::make_unique<Node>(v);
+    if (!current) {
+        current = std::make_unique<Node>(v);
         size++;
         return;
     }
 
-    Node* current = node.get();
-
-    while (true) {
-        if (current->value < v) {
-            if (!current->right) {
-                current->right = std::make_unique<Node>(v);
-                this->size++;
-                return;
-            }
-            current = current->right.get();
-        } else if (current->value > v) {
-            if (!current->left) {
-                current->left = std::make_unique<Node>(v);
-                this->size++;
-                return;
-            }
-            current = current->left.get();
-        } else {
-            return;
-        }
+    if (current->value < v) {
+        insertInternal(v, current->left);
+    } else if (current->value > v) {
+        insertInternal(v, current->right);
     }
 }
 

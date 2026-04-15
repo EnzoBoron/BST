@@ -14,6 +14,7 @@
         void preOrderInternal(Node*) const;
         void inOrderInternal(Node*) const;
         void postOrderInternal(Node*) const;
+        void insertInternal(int, std::unique_ptr<Node>&);
     public:
         void preOrder() const;
         void inOrder() const;
