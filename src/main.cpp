@@ -1,20 +1,3 @@
-# Binary Search Tree (BST) in C++
-
-Simple implementation of a **Binary Search Tree (BST)** in C++.
-
-## ⚙️ Installation
-
-To compile the project, ensure you have **make** and **g++** installed.
-Navigate to the project directory and run:
-
-```bash
-make
-./bst
-```
-
-## 🚀 Example Usage
-
-```cpp
 #include "../include/tree.hpp"
 
 int main()
@@ -44,14 +27,3 @@ int main()
 
     return 0;
 }
-```
-
-## 🛠️ Roadmap
-
-- [ ] Make the insert function recursive
-- [ ] Use a template
-- [ ] Add operator overloading (printing and comparisons)
-
-## 📜 License
-
-Free to use for educational purposes.

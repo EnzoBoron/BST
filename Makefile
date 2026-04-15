@@ -1,14 +1,26 @@
-SRC = 	./src/tree.cpp \
+SRC = ./src/tree.cpp \
+	  ./src/main.cpp
 CC = g++
-CFLAG = Wall
-EXEC_NAME = bst
+CFLAGS = -Wall
+
+ifeq ($(OS),Windows_NT)
+	EXEC_NAME = bst.exe
+else
+	EXEC_NAME = bst
+endif
+
+ifeq ($(OS),Windows_NT)
+	RM = del /Q
+else
+	RM = rm -f
+endif
 
 all: $(EXEC_NAME)
 
 $(EXEC_NAME):
-	$(CC) -o $(EXEC_NAME) $(SRC)
+	$(CC) $(CFLAGS) -o $(EXEC_NAME) $(SRC)
 
 clean:
-	rm -f $(EXEC_NAME)
+	$(RM) $(EXEC_NAME)
 
 re: clean all
